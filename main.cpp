@@ -5,6 +5,7 @@
 #include <ios>
 #include <iostream>
 #include <raylib.h>
+#include <string>
 
 uint8_t reg[0x0F]{};
 
@@ -41,6 +42,7 @@ void print_registers() {
     std::cout << "\n";
 }
 
+// Initialize font glyphs
 void init_memory() {
     memory[0x00] = 0xf0;
     memory[0x01] = 0x90;
@@ -251,13 +253,20 @@ void step() {
     }
 }
 
-int main(void) {
-    std::srand(std::time({}));
-    std::ifstream f{"./random_number_test.ch8", std::ios::binary};
-    if (!f) {
-        std::cerr << "Failed to load file";
+int main(int argc, char **argv) {
+    if (argc != 2) {
+        std::cerr << std::format("Usage: {} rom_file\n", argv[0]);
         return 1;
     }
+    std::string file = argv[1];
+
+    std::ifstream f{file, std::ios::binary};
+    if (!f) {
+        std::cerr << "Failed to load file\n";
+        return 1;
+    }
+
+    std::srand(std::time({}));
 
     init_memory();
     uint16_t p = 0x0200;
@@ -268,9 +277,6 @@ int main(void) {
     bool c = false;
 
     InitWindow(0x3f * 16, 0x1f * 16, "CHIP-8");
-
-    // print_memory();
-    //
 
     pc = 0x0200;
     while (!WindowShouldClose()) {
