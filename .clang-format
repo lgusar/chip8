@@ -1,0 +1,18 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+
+AllowShortFunctionsOnASingleLine: None
+#
+# BinPackParameters: false
+# BinPackArguments: false
+#
+# AllowAllParametersOfDeclarationOnNextLine: false
+# AllowAllArgumentsOnNextLine: false
+#
+# PenaltyBreakBeforeFirstCallParameter: 0
+#
+# BreakFunctionDefinitionParameters: true
+# BreakFunctionDeclarationParameters: true
+#
+# AlignAfterOpenBracket: DontAlign
+#
