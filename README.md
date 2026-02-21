@@ -31,3 +31,16 @@ cmake -B build && cmake --build build
 ```bash
 ./build/chip8
 ```
+
+## Usage
+
+### Program execution
+
+Press `SPACE` to step forward.
+Press `C` to continue;
+Press `ESC` to close the window and exit the program.
+
+### Debugging
+
+Press `M` to print memory around I register.
+Press `R` to print registers.
